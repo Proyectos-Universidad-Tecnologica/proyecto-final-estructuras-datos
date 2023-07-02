@@ -47,13 +47,21 @@ class TreeNode():
 
 
 
-def get_weight(list):
-    return int(len(list))
+def get_weight(root):
+    if root is None:
+        return 0
+    else:
+        left_weight = get_weight(root.left)
+        right_weight = get_weight(root.right)
+        return 1 + left_weight + right_weight
+
+
 
 def create_tree(list):
 
     tree = TreeNode(list[0])
-    length = get_weight(list)
+
+    length = int(len(list))
 
     for i in range(1, length):
         tree.insert(list[i])
